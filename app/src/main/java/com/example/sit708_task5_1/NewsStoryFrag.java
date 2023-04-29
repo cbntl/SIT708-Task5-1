@@ -60,8 +60,14 @@ public class NewsStoryFrag extends Fragment {
         newsDetailsTextView = view.findViewById(R.id.newsDetailsTextView);
         relatedNewsView = view.findViewById(R.id.relatedStoriesRecyclerView);
         homeButton = view.findViewById(R.id.button);
-        newsTitleTextView.setText(newsItem.getTitle());
         newsDetailsTextView.setText(newsItem.getDescription());
+        newsTitleTextView.setText(newsItem.getTitle());
+        if(newsItem.getTitle().contains("Story")){
+            newsImageView.setImageResource(R.drawable.image1);
+        } else {
+            newsImageView.setImageResource(R.drawable.image2);
+        }
+
         homeButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = ((AppCompatActivity) context).getSupportFragmentManager();
             fragmentManager.beginTransaction().setReorderingAllowed(true).replace(R.id.fragment_container, NewsStoryListFragment.newInstance(context), null).addToBackStack(null).commit();
@@ -117,8 +123,14 @@ public class NewsStoryFrag extends Fragment {
 
         @Override
         public void onBindViewHolder(viewHolder holder, int position) {
+
             holder.relatedNewsTitle.setText(newsItemList.get(position).getTitle());
             holder.relatedNewsDescription.setText(newsItemList.get(position).getDescription());
+            if(newsItemList.get(position).getTitle().contains("Story")){
+                holder.relatedNewsItemImageview.setImageResource(R.drawable.image1);
+            } else {
+                holder.relatedNewsItemImageview.setImageResource(R.drawable.image2);
+            }
             holder.bind(newsItemList.get(position), listener);
         }
 

@@ -94,6 +94,7 @@ public class NewsStoryListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(viewHolder holder, int position) {
+            holder.storyImageView.setImageResource(R.drawable.image1);
             holder.storyTitle.setText(newsItemList.get(position).getTitle());
             holder.bind(newsItemList.get(position), listener);
         }
@@ -137,6 +138,7 @@ public class NewsStoryListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(viewHolder holder, int position) {
+            holder.imageView.setImageResource(R.drawable.image2);
             holder.newsTitle.setText(newsItemList.get(position).getTitle());
             holder.bind(newsItemList.get(position), listener);
         }
